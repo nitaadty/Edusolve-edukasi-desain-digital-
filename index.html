@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edusolve | Edukasi & Desain Digital</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+            background: linear-gradient(135deg, #4a477e, #6b5fd2);
+            color:#fff;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ================= BACKGROUND BUBBLE ================= */
+        .bubble-bg{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .bubbles{
+            position: relative;
+            display: flex;
+        }
+
+        .bubbles span{
+            position: relative;
+            width: 30px;
+            height: 30px;
+            background: #4fc3dc;
+            margin: 0 4px;
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 10px #4fc3dc44,
+                0 0 50px #4fc3dc,
+                0 0 100px #4fc3dc;
+            animation: animate 15s linear infinite;
+            animation-duration: calc(125s / var(--i));
+            opacity: 0.6;
+        }
+
+        .bubbles span:nth-child(even){
+            background: #ff2d75;
+            box-shadow:
+                0 0 0 10px #ff2d7544,
+                0 0 50px #ff2d75,
+                0 0 100px #ff2d75;
+        }
+
+        @keyframes animate{
+            0%{
+                transform: translateY(100vh) scale(0);
+            }
+            100%{
+                transform: translateY(-10vh) scale(1);
+            }
+        }
+
+        /* ================= NAVBAR ================= */
+        .navbar{
+            padding:20px 0;
+            background: rgba(0,0,0,.35);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar-brand h4{
+            color:#fff;
+            font-weight:600;
+        }
+
+        .navbar-nav li{
+            margin-left:30px;
+        }
+
+        .navbar-nav a{
+            color:#fff;
+            font-size:18px;
+            opacity:.85;
+            transition:.3s;
+        }
+
+        .navbar-nav a:hover{
+            opacity:1;
+            color:#c26cff;
+        }
+
+        /* ================= HOME ================= */
+        .home{
+            min-height:100vh;
+            display:flex;
+            align-items:center;
+            padding:20px 9% 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .home-info h1{
+            font-size:56px;
+            font-weight:700;
+        }
+
+        .subtitle{
+            font-size:18px;
+            margin:15px 0 25px;
+            opacity:.9;
+            max-width:520px;
+        }
+
+        .features{
+            list-style:none;
+            padding-left:0;
+            margin-bottom:35px;
+        }
+
+        .features li{
+            font-size:16px;
+            margin-bottom:12px;
+        }
+
+        .btn-primary-custom{
+            background:#a642e9;
+            padding:12px 30px;
+            border-radius:30px;
+            color:#fff;
+            text-decoration:none;
+            font-weight:500;
+            transition:.3s;
+            display:inline-block;
+        }
+
+        .btn-primary-custom:hover{
+            background:#c26cff;
+            transform:translateY(-3px);
+        }
+
+        .home-img{
+            display:flex;
+            justify-content:center;
+        }
+
+        .img-box{
+            width:320px;
+            height:320px;
+            border-radius:50%;
+            background:rgba(255,255,255,.1);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            backdrop-filter: blur(8px);
+        }
+
+        .img-box img{
+            width:75%;
+        }
+
+        @media (max-width: 992px){
+            .home{
+                flex-direction:column;
+                text-align:center;
+            }
+            .home-img{
+                margin-top:40px;
+            }
+        }
+
+        footer{
+            background:rgba(0,0,0,.25);
+            text-align:center;
+            padding:20px 0;
+            font-size:14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ================= NAVBAR RESPONSIVE ================= */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* MODE HP */
+@media (max-width: 991px) {
+
+    .navbar {
+        padding: 15px 0;
+    }
+
+    .navbar-nav li {
+        margin-left: 0;
+        margin-bottom: 12px;
+    }
+
+    .navbar-collapse {
+        background: rgba(0,0,0,.55);
+        backdrop-filter: blur(10px);
+        padding: 15px;
+        border-radius: 12px;
+        margin-top: 15px;
+    }
+
+    .navbar-nav a {
+        font-size: 17px;
+        opacity: 1;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+<!-- ===== BACKGROUND BUBBLE ===== -->
+<div class="bubble-bg">
+    <div class="bubbles">
+        <span style="--i:11;"></span>
+        <span style="--i:12;"></span>
+        <span style="--i:24;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:16;"></span>
+        <span style="--i:19;"></span>
+        <span style="--i:20;"></span>
+        <span style="--i:22;"></span>
+        <span style="--i:25;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:21;"></span>
+        <span style="--i:15;"></span>
+        <span style="--i:13;"></span>
+        <span style="--i:26;"></span>
+        <span style="--i:17;"></span>
+        <span style="--i:28;"></span>
+        <span style="--i:11;"></span>
+        <span style="--i:12;"></span>
+        <span style="--i:24;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:16;"></span>
+        <span style="--i:19;"></span>
+        <span style="--i:20;"></span>
+        <span style="--i:22;"></span>
+        <span style="--i:25;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:21;"></span>
+        <span style="--i:15;"></span>
+        <span style="--i:13;"></span>
+        <span style="--i:26;"></span>
+        <span style="--i:17;"></span>
+        <span style="--i:28;"></span>
+    </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+
+    <a class="navbar-brand" href="#">
+      <h4 class="mb-0">Edusolve</h4>
+    </a>
+
+    <!-- TOMBOL HAMBURGER -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENU -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="template.html">Template</a></li>
+        <li class="nav-item"><a class="nav-link" href="edukasi.html">Mentor Online</a></li>
+        <li class="nav-item"><a class="nav-link" href="desain-mandiri.html">Desain Anda</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ===== HOME ===== -->
+<section class="home">
+    <div class="home-info col-lg-6">
+        <h1><span id="element"></span></h1>
+        <p class="subtitle">
+            Platform edukasi & kreativitas digital untuk meningkatkan keterampilan
+            dan membuka peluang ekonomi bagi para kreator.
+        </p>
+
+        <ul class="features">
+            <li>✨ Marketplace template siap pakai</li>
+            <li>🎨 Fitur desain mandiri yang praktis</li>
+            <li>🎓 Mentoring online bersama ahli</li>
+        </ul>
+
+        <a href="template.html" class="btn-primary-custom">Coba Template Sekarang</a>
+    </div>
+
+    <div class="home-img col-lg-6">
+        <div class="img-box">
+            <img src="edusolve-removebg-preview.png" alt="Edusolve">
+        </div>
+    </div>
+</section>
+
+<footer>
+    By Qanita Adetya
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+    new Typed('#element', {
+        strings: ["Edusolve"],
+        typeSpeed: 200,
+        loop: true
+    });
+</script>
+
+</body>
+</html>

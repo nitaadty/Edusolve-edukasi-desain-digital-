@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edusolve | Mentor Online</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins', sans-serif;
+        }
+
+        body{
+            background: linear-gradient(135deg, #4a477e, #6b5fd2);
+            color:#fff;
+        }
+
+        /* ================= BACKGROUND BUBBLE ================= */
+        .bubble-bg{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .bubbles{
+            position: relative;
+            display: flex;
+        }
+
+        .bubbles span{
+            position: relative;
+            width: 30px;
+            height: 30px;
+            background: #4fc3dc;
+            margin: 0 4px;
+            border-radius: 50%;
+            box-shadow:
+                0 0 0 10px #4fc3dc44,
+                0 0 50px #4fc3dc,
+                0 0 100px #4fc3dc;
+            animation: animate 15s linear infinite;
+            animation-duration: calc(125s / var(--i));
+            opacity: 0.6;
+        }
+
+        .bubbles span:nth-child(even){
+            background: #ff2d75;
+            box-shadow:
+                0 0 0 10px #ff2d7544,
+                0 0 50px #ff2d75,
+                0 0 100px #ff2d75;
+        }
+
+        @keyframes animate{
+            0%{
+                transform: translateY(100vh) scale(0);
+            }
+            100%{
+                transform: translateY(-10vh) scale(1);
+            }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar{
+            padding:20px 0;
+            background: rgba(0,0,0,.35);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand h4{
+            color:#fff;
+            font-weight:600;
+        }
+
+        .navbar-nav li{
+            margin-left:30px;
+        }
+
+        .navbar-nav a{
+            color:#fff;
+            font-size:18px;
+            opacity:.85;
+            transition:.3s;
+        }
+
+        .navbar-nav a:hover{
+            opacity:1;
+            color:#c26cff;
+        }
+
+        /* ===== HEADER ===== */
+        .mentor-header{
+            text-align:center;
+            padding:100px 10% 60px;
+        }
+
+        .mentor-header h1{
+            font-size:46px;
+            font-weight:700;
+        }
+
+        .mentor-header p{
+            max-width:650px;
+            margin:15px auto 0;
+            opacity:.9;
+            font-size:18px;
+        }
+
+        /* ===== MENTOR CARD ===== */
+        .mentor-section{
+            padding:0 9% 80px;
+        }
+
+        .mentor-card{
+            background:rgba(255,255,255,.12);
+            border-radius:25px;
+            padding:25px;
+            text-align:center;
+            backdrop-filter: blur(10px);
+            transition:.3s;
+            height:100%;
+        }
+
+        .mentor-card:hover{
+            transform:translateY(-10px);
+        }
+
+        .mentor-img{
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            object-fit:cover;
+            margin-bottom:15px;
+            border:3px solid #a642e9;
+        }
+
+        .mentor-card h5{
+            font-weight:600;
+            margin-bottom:5px;
+        }
+
+        .mentor-role{
+            font-size:14px;
+            color:#c26cff;
+            margin-bottom:10px;
+        }
+
+        .mentor-card p{
+            font-size:14px;
+            opacity:.9;
+        }
+
+        .mentor-info{
+            font-size:13px;
+            opacity:.85;
+            margin-bottom:15px;
+        }
+
+        .btn-mentor{
+            display:inline-block;
+            padding:10px 25px;
+            background:#a642e9;
+            border-radius:25px;
+            color:#fff;
+            text-decoration:none;
+            font-size:14px;
+            transition:.3s;
+        }
+
+        .btn-mentor:hover{
+            background:#c26cff;
+        }
+
+        /* ===== FOOTER ===== */
+        footer{
+            background:rgba(0,0,0,.25);
+            text-align:center;
+            padding:20px 0;
+            font-size:14px;
+        }
+
+        @media (max-width:768px){
+            .mentor-header h1{
+                font-size:34px;
+            }
+        }
+        .rating{
+            font-size: 20px;
+            color: gold;
+        }
+
+        .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ================= NAVBAR RESPONSIVE ================= */
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* MODE HP */
+@media (max-width: 991px) {
+
+    .navbar {
+        padding: 15px 0;
+    }
+
+    .navbar-nav li {
+        margin-left: 0;
+        margin-bottom: 12px;
+    }
+
+    .navbar-collapse {
+        background: rgba(0,0,0,.55);
+        backdrop-filter: blur(10px);
+        padding: 15px;
+        border-radius: 12px;
+        margin-top: 15px;
+    }
+
+    .navbar-nav a {
+        font-size: 17px;
+        opacity: 1;
+    }
+}
+        
+    
+    </style>
+</head>
+
+<body>
+
+<!-- ===== BACKGROUND BUBBLE ===== -->
+<div class="bubble-bg">
+    <div class="bubbles">
+        <span style="--i:11;"></span>
+        <span style="--i:12;"></span>
+        <span style="--i:24;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:16;"></span>
+        <span style="--i:19;"></span>
+        <span style="--i:20;"></span>
+        <span style="--i:22;"></span>
+        <span style="--i:25;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:21;"></span>
+        <span style="--i:15;"></span>
+        <span style="--i:13;"></span>
+        <span style="--i:26;"></span>
+        <span style="--i:17;"></span>
+        <span style="--i:28;"></span>
+        <span style="--i:11;"></span>
+        <span style="--i:12;"></span>
+        <span style="--i:24;"></span>
+        <span style="--i:10;"></span>
+        <span style="--i:14;"></span>
+        <span style="--i:23;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:16;"></span>
+        <span style="--i:19;"></span>
+        <span style="--i:20;"></span>
+        <span style="--i:22;"></span>
+        <span style="--i:25;"></span>
+        <span style="--i:18;"></span>
+        <span style="--i:21;"></span>
+        <span style="--i:15;"></span>
+        <span style="--i:13;"></span>
+        <span style="--i:26;"></span>
+        <span style="--i:17;"></span>
+        <span style="--i:28;"></span>
+    </div>
+</div>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+
+    <a class="navbar-brand" href="#">
+      <h4 class="mb-0">Edusolve</h4>
+    </a>
+
+    <!-- TOMBOL HAMBURGER -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- MENU -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="template.html">Template</a></li>
+        <li class="nav-item"><a class="nav-link" href="edukasi.html">Mentor Online</a></li>
+        <li class="nav-item"><a class="nav-link" href="desain-mandiri.html">Desain Anda</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<section class="mentor-header">
+    <h1>Mentor Online Profesional</h1>
+    <p>
+        Konsultasi dan belajar langsung bersama mentor berpengalaman
+        di bidang desain, teknologi, dan kreativitas digital.
+    </p>
+</section>
+
+<!-- ===== MENTOR LIST ===== -->
+<section class="mentor-section">
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="mentor-card">
+                <img src="OIP (1).jpeg" class="mentor-img" alt="Mentor">
+                <h5>Andi Pratama</h5>
+                <div class="mentor-role">UI/UX Designer</div>
+                <p>Berpengalaman lebih dari 5 tahun di bidang desain digital.</p>
+                <div class="mentor-info">
+                    Lulusan S1 Desain Komunikasi Visual<br>
+                    Spesialis UI/UX & Web Design
+                </div>
+                <a href="#" class="btn-mentor" data-bs-toggle="modal" data-bs-target="#mentorAndi">Ambil Mentor</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="mentor-card">
+                <img src="OIP (2).jpeg" class="mentor-img" alt="Mentor">
+                <h5>Siti Rahma</h5>
+                <div class="mentor-role">Graphic Designer</div>
+                <p>Aktif sebagai freelancer dan content creator.</p>
+                <div class="mentor-info">
+                    Lulusan S1 Multimedia<br>
+                    Branding & Visual Content
+                </div>
+                <a href="#" class="btn-mentor" data-bs-toggle="modal" data-bs-target="#mentorSiti">Ambil Mentor</a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="mentor-card">
+                <img src="OIP.jpeg" class="mentor-img" alt="Mentor">
+                <h5>Bima Saputra</h5>
+                <div class="mentor-role">Web Developer</div>
+                <p>Membantu pemula memahami web dari dasar.</p>
+                <div class="mentor-info">
+                    Lulusan S1 Teknik Informatika<br>
+                    HTML, CSS, Bootstrap
+                </div>
+                <a href="#" class="btn-mentor" data-bs-toggle="modal" data-bs-target="#mentorBima">Ambil Mentor</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- MODAL MENTOR UNTUK SI ANDI -->
+<div class="modal fade" id="mentorAndi" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Andi Pratama — UI/UX Designer</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <img src="OIP (1).jpeg" class="mentor-img mb-3" style="width:120px">
+
+        <p><b>Pengalaman:</b> 5+ tahun di bidang UI/UX Design</p>
+        <p><b>Spesialis:</b> Figma, Web Design, UX Research</p>
+        <p><b>Jadwal:</b> Senin - Jumat (19.00 - 21.00)</p>
+
+        <div class="rating">⭐⭐⭐⭐⭐</div> <br>
+
+        <a href="https://wa.me/6281234567890" target="_blank" class="btn-mentor">
+            Chat via WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MENTOR UNTUK SI SITI -->
+<div class="modal fade" id="mentorSiti" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Siti Rahma — Graphic Designer</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <img src="OIP (2).jpeg" class="mentor-img mb-3" style="width:120px">
+
+        <p><b>Pengalaman:</b> 4+ tahun di bidang desain grafis</p>
+        <p><b>Spesialis:</b> Branding, Konten Media Sosial, Visual Design</p>
+        <p><b>Jadwal:</b> Selasa – Sabtu (10.00 – 16.00)</p>
+
+        <div class="rating">⭐⭐⭐⭐⭐</div> <br>
+
+        <a href="https://wa.me/6281234567891" target="_blank" class="btn-mentor">
+            Chat via WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MENTOR UNTUK SI BIMA -->
+<div class="modal fade" id="mentorBima" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Bima Saputra — Web Developer</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <img src="OIP.jpeg" class="mentor-img mb-3" style="width:120px">
+
+        <p><b>Pengalaman:</b> 5+ tahun di bidang Web Development</p>
+        <p><b>Spesialis:</b> HTML, CSS, Bootstrap, Website Responsif</p>
+        <p><b>Jadwal:</b> Senin – Jumat (18.00 – 21.00)</p>
+
+         <div class="rating">⭐⭐⭐⭐⭐</div> <br>
+
+        <a href="https://wa.me/6281234567892" target="_blank" class="btn-mentor">
+            Chat via WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+    By Qanita Adetya
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
